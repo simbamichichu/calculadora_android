@@ -7,6 +7,7 @@ import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
     var total: Int = 0
+    var operator: Char = '+'
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,28 +73,21 @@ class MainActivity : AppCompatActivity() {
         text.text = text.text.toString() + text2.text.toString() + "+"
         text2.text = ""
     }
-
     fun pressDigitEqual(view: View) {
         var txt1: TextView = findViewById(R.id.text)
         var txt2: TextView = findViewById(R.id.text2)
 
-        total += txt2.text.toString().toInt()
-
-        txt1.text = txt1.text.toString() + txt2.text.toString() + "="
-        txt2.text = total.toString()
+        val operand2 = txt2.text.toString().toInt()
 
         when (operator) {
-            '+' -> {
-                txt1 +=
-            }
-            '-' -> {
-                txt1 -= second
-            }
-            '*' -> {txt1 *= second
-            }
-            '/' -> {txt1 /= }
+            '+' -> total += operand2
+            '-' -> total -= operand2
+            '*' -> total *= operand2
+            '%' -> total %= operand2
 
         }
+        txt1.text = txt1.text.toString() + txt2.text.toString() + "="
+        txt2.text = total.toString()
     }
 
     fun pressDigitC(view: View) {
@@ -168,3 +162,5 @@ class MainActivity : AppCompatActivity() {
 
     }
 }
+
+
